@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import TransactionsTable from './components/TransactionsTable';
+import Statistics from './components/Statistics';
+import BarChart from './components/BarChart';
+import PieChart from './components/PieChart';
+import './components/styles.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [month, setMonth] = useState('March');
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    return (
+        <div className="app">
+            <h1>MERN Stack Coding Challenge</h1>
+            <select onChange={(e) => setMonth(e.target.value)}>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                {/* Add other months */}
+            </select>
+            <TransactionsTable month={month} />
+            <Statistics month={month} />
+            <BarChart month={month} />
+            <PieChart month={month} />
+        </div>
+    );
+};
 
-export default App
+export default App;
