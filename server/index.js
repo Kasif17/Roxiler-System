@@ -10,19 +10,14 @@ const app = express();
 mongoose.connect('mongodb+srv://developer786kasif:7860323258@cluster0.gp5zanz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch((err) => {
+    console.error('Failed to connect to MongoDB', err);
 });
 
 // Define Mongoose Schema and Model
-const transactionSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    price: Number,
-    dateOfSale: Date,
-    category: String,
-    sold: Boolean,
-});
 
-const Transaction = mongoose.model('Transaction', transactionSchema);
 
 // API to Initialize Database
 app.get('/initialize', async (req, res) => {
