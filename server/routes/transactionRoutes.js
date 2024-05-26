@@ -7,7 +7,7 @@ const {
     getBarChart,
     getPieChart,
     getCombinedData
-} = require('../controllers/transactionController');
+} = require('../controller/transactionController');
 
 const router = express.Router();
 

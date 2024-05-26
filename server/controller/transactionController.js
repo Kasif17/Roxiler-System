@@ -1,6 +1,6 @@
 // controllers/transactionController.js
 const axios = require('axios');
-const Transaction = require('../models/transaction');
+const Transaction = require('../Model/transaction');
 
 const initializeDatabase = async (req, res) => {
     try {

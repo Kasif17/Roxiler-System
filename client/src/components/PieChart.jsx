@@ -8,6 +8,7 @@ const PieChart = ({ month }) => {
 
     useEffect(() => {
         fetchData();
+        
     }, [month]);
 
     const fetchData = async () => {
