@@ -8,7 +8,13 @@ const PieChart = ({ month }) => {
 
     useEffect(() => {
         fetchData();
-        
+
+        return () => {
+            // Clean up the chart instance
+            if (window.chartInstance) {
+                window.chartInstance.destroy();
+            }
+        };
     }, [month]);
 
     const fetchData = async () => {
@@ -34,7 +40,8 @@ const PieChart = ({ month }) => {
         ],
     };
 
-    return <Pie data={chartData} />;
+    return <Pie data={chartData} ref={(chart) => { window.chartInstance = chart && chart.chartInstance; }} />;
 };
 
 export default PieChart;
+

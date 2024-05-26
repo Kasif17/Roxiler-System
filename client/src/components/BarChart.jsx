@@ -8,6 +8,13 @@ const BarChart = ({ month }) => {
 
     useEffect(() => {
         fetchData();
+
+        return () => {
+            // Clean up the chart instance
+            if (window.chartInstance) {
+                window.chartInstance.destroy();
+            }
+        };
     }, [month]);
 
     const fetchData = async () => {
@@ -26,7 +33,8 @@ const BarChart = ({ month }) => {
         ],
     };
 
-    return <Bar data={chartData} />;
+    return <Bar data={chartData} ref={(chart) => { window.chartInstance = chart && chart.chartInstance; }} />;
 };
 
 export default BarChart;
+

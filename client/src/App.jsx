@@ -28,7 +28,7 @@ const App = () => {
         <div className="app">
             <h1>MERN Stack Coding Challenge</h1>
             {message && <p className="message">{message}</p>}
-            <select onChange={(e) => setMonth(e.target.value)}>
+            <select onChange={(e) => setMonth(e.target.value)} value={month}>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -43,6 +43,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
